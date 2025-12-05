@@ -5,34 +5,34 @@ class Ciudad{
     #poblacion
     #coordenadas
     constructor(nombre, pais, gentilicio){
-        nombre = nombre;
-        pais = pais;
-        gentilicio = gentilicio;
+        this.#nombre = nombre;
+        this.#pais = pais;
+        this.#gentilicio = gentilicio;
     }
 
     rellenarAtributos(poblacion, coordenadas){
-        poblacion = poblacion;
-        coordenadas = coordenadas;
+        this.#poblacion = poblacion;
+        this.#coordenadas = coordenadas;
     }
 
     obtenerNombre(){
-        return nombre;
+        return this.#nombre;
     }
     obtenerPais(){
-        return pais;
+        return this.#pais;
     }
     obtenerGentilicioPoblacion(){
-        const gentilicio = this.gentilicio ?? 'Desconocido';
-        const poblacion = (this.poblacion !== undefined && this.poblacion !== null) ? this.poblacion : 'Desconocida';
-        return `<ul><li>Gentilicio: ${gentilicio}</li><li>Población: ${poblacion}</li></ul>`;
+        const gentilicio = this.#gentilicio ?? 'Desconocido';
+        const poblacion = (this.#poblacion !== undefined && this.#poblacion !== null) ? this.#poblacion : 'Desconocida';
+        return `<ul><li>Gentilicio: ${this.#gentilicio}</li><li>Población: ${this.#poblacion}</li></ul>`;
     }
 
     obtenerDescripcion(){
-        return `${nombre} es una ciudad de ${pais} y su gentilicio es ${gentilicio}.`;
+        return `${this.#nombre} es una ciudad de ${this.#pais} y su gentilicio es ${this.#gentilicio}.`;
     }
 
     mostrarCoordenadas(){
-        const coordenadas = this.coordenadas ?? 'Desconocidas';
+        const coordenadas = this.#coordenadas ?? 'Desconocidas';
         //document.write(`<p>Coordenadas: ${coordenadas}</p>`);
         const mensaje = document.createElement('p');
         mensaje.textContent = `Coordenadas: ${coordenadas}`;

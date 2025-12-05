@@ -6,34 +6,34 @@ class Memoria {
     #cronometro
 
     constructor(elementoCronometro = null) {
-        tablero_bloqueado = true;
-        primera_carta = null;
-        segunda_carta = null;
+        this.#tablero_bloqueado = true;
+        this.#primera_carta = null;
+        this.#segunda_carta = null;
 
-        cronometro = new Cronometro(elementoCronometro);
+        this.#cronometro = new Cronometro(elementoCronometro);
 
         barajarCartas();
-        tablero_bloqueado = false;
+        this.#tablero_bloqueado = false;
 
-        cronometro.arrancar();
+        this.#cronometro.arrancar();
     }
 
     voltearCarta(carta) {
-        if (tablero_bloqueado) return;
+        if (this.#tablero_bloqueado) return;
         if (!carta) return;
         if (carta.dataset.estado === 'revelada') return;
         if (carta.dataset.estado === 'volteada') return;
 
         carta.dataset.estado = 'volteada';
 
-        if (!primera_carta) {
-            primera_carta = carta;
+        if (!this.#primera_carta) {
+            this.#primera_carta = carta;
             return;
         }
 
-        if (primera_carta === carta) return;
+        if (this.#primera_carta === carta) return;
 
-        segunda_carta = carta;
+        this.#segunda_carta = carta;
         comprobarPareja();
     }
 
@@ -59,9 +59,9 @@ class Memoria {
     }
 
     #reiniciarAtributos() {
-        tablero_bloqueado = false;  
-        primera_carta = null;
-        segunda_carta = null;
+        this.#tablero_bloqueado = false;  
+        this.#primera_carta = null;
+        this.#segunda_carta = null;
     }
 
     #comprobarJuego() {
@@ -75,8 +75,8 @@ class Memoria {
         }
 
 
-        if (cronometro) {
-            cronometro.parar();
+        if (this.#cronometro) {
+            this.#cronometro.parar();
         }
 
         return true;
@@ -84,7 +84,7 @@ class Memoria {
 
     
     #cubrirCartas() {
-        tablero_bloqueado = true;
+        this.#tablero_bloqueado = true;
 
         const primera = primera_carta;
         const segunda = segunda_carta;
@@ -99,18 +99,18 @@ class Memoria {
 
     
     #deshabilitarCartas() {
-        if (primera_carta) primera_carta.dataset.estado = 'revelada';
-        if (segunda_carta) segunda_carta.dataset.estado = 'revelada';
+        if (this.#primera_carta) this.#primera_carta.dataset.estado = 'revelada';
+        if (this.#segunda_carta) this.#segunda_carta.dataset.estado = 'revelada';
 
         comprobarJuego();
         reiniciarAtributos();
     }
 
     #comprobarPareja() { //Por imagen
-        if (!primera_carta || !segunda_carta) return;
+        if (!this.#primera_carta || !this.#segunda_carta) return;
 
-        const img1 = primera_carta.querySelector('img');
-        const img2 = segunda_carta.querySelector('img');
+        const img1 = this.#primera_carta.querySelector('img');
+        const img2 = this.#segunda_carta.querySelector('img');
 
         const src1 = img1 ? img1.getAttribute('src') : '';
         const src2 = img2 ? img2.getAttribute('src') : '';
