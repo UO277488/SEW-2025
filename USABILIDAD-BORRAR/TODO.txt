@@ -1,0 +1,6 @@
+Eliminar mensajes a usuario y comprobar htmls: no ids. Mapbox incorrecto.
+
+Las preguntas del formulario no deben monitorearse
+
+
+Preguntas de usabilidad: Quién es el ganador de la carrera? Qué tiempo hace en la ciudad? ...

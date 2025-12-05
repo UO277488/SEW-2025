@@ -1,0 +1,42 @@
+/* Grid layout para las cartas del juego de memoria */
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    padding: 1em;
+}
+
+/* El título ocupa toda la primera fila */
+main > h2 {
+    grid-column-start: 1;
+    grid-column-end: 5; /* O también podríamos usar 'span 4' */
+}
+
+/* Las migas de pan también ocupan toda la fila */
+main > p {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+/* El párrafo del cronómetro ocupa toda la fila y tiene texto centrado */
+main > p:nth-child(3) {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    text-align: center;
+}
+
+/* Media query para dispositivos móviles */
+@media screen and (max-width: 465px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5em;
+        padding: 0.5em;
+    }
+
+    /* Actualizamos los spans para la nueva estructura de 2 columnas */
+    main > h2,
+    main > p {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
