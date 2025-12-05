@@ -1,0 +1,22 @@
+
+Tarea 2 Ejercicio 1: Añadir listeners en un método privado o en el constructor en el js para no mezclar presentación con business
+
+atributos onClick cambiar por EventListener
+
+
+en el media de flicker, {m: 'https://live..._m }
+	Esa m es un sufijo del tamaño de la imagen.
+	En nuestro caso debemos usar el z.
+    
+    
+Ojo, para la imagen añadir un estilo para redimensionar el carrusel de imágenes para que no salga el scroll horizontal Y debemos usar el feed gratuito como el de Cueva
+
+Con el link que me devuelve el servicio en el parametro de .done (como en el ejemplo de cueva), depuras, ves lo que hay en data, los elementos que te devuelve, te quedas con el link, la copio, me la quedo y le cambio el sufijo
+
+En el consumo de servicios de noticias: crear sesión con cualquier email que no sea el de uniovi: no funciona
+
+
+
+Este
+
+

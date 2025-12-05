@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Vista SVG — circuito</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:8px} #out{border:1px solid #ccc}</style>
+</head>
+<body>
+  <h2>Previsualización SVG del circuito</h2>
+  <p>Si usas XAMPP abre <code>/MotoGP-Desktop/circuito_svg.html</code> vía <code>http://localhost/MotoGP-Desktop/circuito_svg.html</code>. También puedes abrir localmente pero algunos navegadores bloquean XSLT local por seguridad.</p>
+  <div id="out">Cargando...</div>
+
+  <script>
+    (async function(){
+      const xmlPath = 'xml/circuitoEsquema.xml';
+      const xslPath = 'xml/circuito2svg.xsl';
+      try{
+        const [xRes, sRes] = await Promise.all([fetch(xmlPath), fetch(xslPath)]);
+        const xmlText = await xRes.text();
+        const xslText = await sRes.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText,'application/xml');
+        const xslDoc = parser.parseFromString(xslText,'application/xml');
+        if(window.XSLTProcessor){
+          const proc = new XSLTProcessor();
+          proc.importStylesheet(xslDoc);
+          const frag = proc.transformToFragment(xmlDoc, document);
+          const out = document.getElementById('out');
+          out.innerHTML = '';
+          out.appendChild(frag);
+        } else {
+          document.getElementById('out').textContent = 'Tu navegador no soporta XSLTProcessor.';
+        }
+      }catch(e){
+        document.getElementById('out').textContent = 'Error cargando archivos: '+e;
+      }
+    })();
+  </script>
+</body>
+</html>
