@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<circuito xmlns="http://www.uniovi.es"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.uniovi.es circuito.xsd">
+    <nombreCircuito>Circuit of the Americas</nombreCircuito>
+    <extension unidad="metros">5513</extension>
+    <anchura unidad="metros">14</anchura>
+    <fecha>2025-03-30</fecha>
+    <hora>15:00:00</hora>
+    <vueltas>56</vueltas>
+    <localidad>Austin, Texas</localidad>
+    <pais>Estados Unidos</pais>
+    <patrocinador>Lenovo</patrocinador>
+
+    <referencias>
+        <referencia>MotoGP — Circuit of The Americas. https://www.motogp.com/</referencia>
+        <referencia>Circuit of The Americas — https://circuitoftheamericas.com/.</referencia>
+        <referencia>Wikipedia — Circuit of the Americas. https://es.wikipedia.org/</referencia>
+    </referencias>
+
+    <galeriaFotos>
+        <foto src="multimedia\Circuit.jpeg"/>
+        <foto src="multimedia\Circuit2.jpeg"/>
+    </galeriaFotos>
+
+    <galeriaVideos>
+        <video src="multimedia\circuito.mp4"/>
+        <video src="multimedia\circuito2.mp4"/>
+    </galeriaVideos>
+
+
+    <origen>
+        <coordenada>
+            <longitud>-97.641111</longitud>
+            <latitud>30.132778</latitud>
+            <altitud>198</altitud>
+        </coordenada>
+    </origen>
+
+    
+        <!--//30.130058, -97.636829
+        //30.132350, -97.637151
+        //30.133630, -97.635134
+        //30.134419, -97.634639
+        //30.134873, -97.633822
+        //30.136004, -97.633209
+        //30.135762, -97.631151
+        //30.13664, -97.62979
+        //30.136214, -97.629041
+        //30.136613, -97.626933
+        //30.139385, -97.624522
+        //30.137285, -97.636626
+        //30.135654, -97.635441
+        //30.135602, -97.636419
+        //30.136586, -97.637485
+        //30.134784, -97.636794
+        //30.133929, -97.637296
+        //30.133724, -97.638734
+        //30.135514, -97.640633
+        //30.134442, -97.643493-->
+    <tramos>
+        <tramo distancia="150" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.636829</longitud>
+                    <latitud>30.130058</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="120" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.637151</longitud>
+                    <latitud>30.132350</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="130" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.635134</longitud>
+                    <latitud>30.133630</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="140" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.634639</longitud>
+                    <latitud>30.134419</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="110" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.633822</longitud>
+                    <latitud>30.134873</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="160" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.633209</longitud>
+                    <latitud>30.136004</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>1</sector>
+        </tramo>
+        <tramo distancia="140" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.631151</longitud>
+                    <latitud>30.135762</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="130" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.629790</longitud>
+                    <latitud>30.136640</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="120" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.629041</longitud>
+                    <latitud>30.136214</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="150" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.626933</longitud>
+                    <latitud>30.136613</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="170" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.624522</longitud>
+                    <latitud>30.139385</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="140" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.636626</longitud>
+                    <latitud>30.137285</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>2</sector>
+        </tramo>
+        <tramo distancia="130" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.635441</longitud>
+                    <latitud>30.135654</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="120" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.636419</longitud>
+                    <latitud>30.135602</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="150" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.637485</longitud>
+                    <latitud>30.136586</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="130" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.636794</longitud>
+                    <latitud>30.134784</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="110" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.637296</longitud>
+                    <latitud>30.133929</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="120" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.638734</longitud>
+                    <latitud>30.133724</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="140" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.640633</longitud>
+                    <latitud>30.135514</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+        <tramo distancia="160" unidad="metros">
+            <punto>
+                <coordenada>
+                    <longitud>-97.643493</longitud>
+                    <latitud>30.134442</latitud>
+                    <altitud>198</altitud>
+                </coordenada>
+            </punto>
+            <sector>3</sector>
+        </tramo>
+    </tramos>
+
+    <ganador>
+        <nombreGanador>Francesco Bagnaia</nombreGanador>
+        <tiempo>00:39:00.191</tiempo>
+    </ganador>
+
+     <podio>
+        <corredor>
+            <posicion>1</posicion>
+            <nombreCorredorPodio>Francesco Bagnaia</nombreCorredorPodio>
+            <puntos>25</puntos>
+        </corredor>
+        <corredor>
+            <posicion>2</posicion>
+            <nombreCorredorPodio>Marc Márquez</nombreCorredorPodio>
+            <puntos>20</puntos>
+        </corredor>
+        <corredor>
+            <posicion>3</posicion>
+            <nombreCorredorPodio>Fabio Quartararo</nombreCorredorPodio>
+            <puntos>16</puntos>
+        </corredor>
+    </podio>
+</circuito>
