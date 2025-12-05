@@ -1,0 +1,61 @@
+ /* Luis Sánchez de Posada Orihuela, UO277488*/
+ /* Estilos generales del proyecto MotoGP-Desktop*/
+/* Text-decoration-line: usar para correcto funcionamiento */
+/* flexbox: para diseño responsivo y alineación */
+/* Colores: rojo (#CC0F0F), beige (#d3a550), crema (#ebe7d0), negro (#121110) */
+/* header con display:flex;, float,fitset,absolut... NO */
+/* CSS tricks*/
+
+
+/* En la tabla: de 5 filas y 2 columnas en vez de al revés */
+
+/* Especificidad: 001 elemento (body) */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #ebe7d0; /* Fondo general */
+    color: #121110;            /* Color de texto principal */
+}
+
+/* Especificidad: 001 elemento (header) */
+header {
+    background-color: #CC0F0F; /* Fondo de la cabecera */
+}
+
+
+header a{
+    color: #ebe7d0; /* Fondo de la cabecera */
+    text-decoration-line: none;
+}
+
+
+/* Especificidad: 012 */
+nav a.active {
+    color: #d3a550;                /* Color diferente para el elemento activo */
+    font-weight: bold;               /* Negrita para destacar */
+}
+
+/* Migas de pan: tamaño de letra más pequeño y destaca el último término */
+/* Especificidad: 002 (main > p:first-of-type)*/
+main > p:first-of-type {
+    font-size: 0.85em;
+    color: #d01110; /* Opcional: color para las migas */
+    margin-bottom: 1em;
+}
+
+/* Especificidad: 003 (main > p:first-of-type strong) */
+main > p:first-of-type strong {
+    color: #CC0F0F;
+    font-weight: bold;
+}
+
+/* Aviso cuando el navegador no soporta la API File */
+.file-support-warning {
+    border: 1px solid #c00;
+    background-color: #fff0f0;
+    color: #600;
+    padding: 8px;
+    margin: 12px 0;
+    border-radius: 4px;
+}
+.file-support-warning a{ color: #600; text-decoration: underline; }
+
