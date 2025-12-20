@@ -38,11 +38,17 @@ class Cronometro{
             'mostrar' => $this->mostrar()
         };
     }
+
+    // Alias con nombre ASCII por compatibilidad
+    public function pulsarBoton($boton){
+        return $this->pulsarBotón($boton);
+    }
+
     //arrancar sesión ??
 }
 session_start();
 ?>
-
+<!doctype html>
 <html lang="es">
     <head>
         <!-- Datos que describen el documento -->
@@ -106,3 +112,4 @@ session_start();
 
     
 </body>
+</html>

@@ -12,7 +12,7 @@ class Memoria {
 
         this.#cronometro = new Cronometro(elementoCronometro);
 
-        barajarCartas();
+        this.#barajarCartas();
         this.#tablero_bloqueado = false;
 
         this.#cronometro.arrancar();
@@ -34,7 +34,7 @@ class Memoria {
         if (this.#primera_carta === carta) return;
 
         this.#segunda_carta = carta;
-        comprobarPareja();
+        this.#comprobarPareja();
     }
 
     #barajarCartas() {
@@ -86,14 +86,14 @@ class Memoria {
     #cubrirCartas() {
         this.#tablero_bloqueado = true;
 
-        const primera = primera_carta;
-        const segunda = segunda_carta;
+        const primera = this.#primera_carta;
+        const segunda = this.#segunda_carta;
 
         
         setTimeout(() => {
             if (primera) primera.removeAttribute('data-estado');
             if (segunda) segunda.removeAttribute('data-estado');
-            reiniciarAtributos();
+            this.#reiniciarAtributos();
         }, 1500);
     }
 
@@ -102,8 +102,8 @@ class Memoria {
         if (this.#primera_carta) this.#primera_carta.dataset.estado = 'revelada';
         if (this.#segunda_carta) this.#segunda_carta.dataset.estado = 'revelada';
 
-        comprobarJuego();
-        reiniciarAtributos();
+        this.#comprobarJuego();
+        this.#reiniciarAtributos();
     }
 
     #comprobarPareja() { //Por imagen
@@ -115,6 +115,6 @@ class Memoria {
         const src1 = img1 ? img1.getAttribute('src') : '';
         const src2 = img2 ? img2.getAttribute('src') : '';
 
-        (src1 === src2) ? deshabilitarCartas() : cubrirCartas();
+        (src1 === src2) ? this.#deshabilitarCartas() : this.#cubrirCartas();
     }
 }

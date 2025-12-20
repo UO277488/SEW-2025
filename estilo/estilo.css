@@ -16,6 +16,12 @@ body {
     color: #121110;            /* Color de texto principal */
 }
 
+/* Especificidad: 001 elemento (main.content) */
+main.content {
+    max-width: 900px;
+    margin: 1em auto;
+}
+
 /* Especificidad: 001 elemento (header) */
 header {
     background-color: #CC0F0F; /* Fondo de la cabecera */
