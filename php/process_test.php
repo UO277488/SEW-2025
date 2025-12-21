@@ -6,8 +6,15 @@ $DB_PASS = '';
 $DB_NAME = 'user_db';
 
 // Recoger y validar
+function render_response($title, $body, $status=200) {
+    http_response_code($status);
+    header('Content-Type: text/html; charset=utf-8');
+    echo "<!doctype html>\n<html lang=\"es\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>".htmlspecialchars($title)."</title>\n<link rel=\"stylesheet\" href=\"/estilo/estilo.css\">\n</head>\n<body>\n<main class=\"content\" style=\"max-width:900px;margin:1em auto;\">\n".$body."\n</main>\n</body>\n</html>";
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405); echo 'Method Not Allowed'; exit;
+    render_response('Method Not Allowed', '<h1>Method Not Allowed</h1><p>Este endpoint acepta únicamente peticiones POST.</p>', 405);
 }
 $time_taken = isset($_POST['time_taken']) ? intval($_POST['time_taken']) : null;
 // usuario
@@ -25,10 +32,10 @@ $would_use = isset($_POST['would_use']) ? (int)$_POST['would_use'] : null;
 
 $responses = [];
 if ($device === '') {
-    die('Por favor indica el dispositivo utilizado.');
+    render_response('Petición incorrecta', '<h1>Petición incorrecta</h1><p>Por favor indica el dispositivo utilizado.</p>', 400);
 }
 if ($would_use === null) {
-    die('Por favor indica si volverías a usar la aplicación.');
+    render_response('Petición incorrecta', '<h1>Petición incorrecta</h1><p>Por favor indica si volverías a usar la aplicación.</p>', 400);
 }
 $responses['device'] = $device;
 $responses['would_use'] = $would_use ? 'yes' : 'no';
@@ -77,13 +84,8 @@ $stmtRes->close();
 $mysqli->close();
 
 if ($ok) {
-    echo "<!doctype html><html><head><meta charset=\"utf-8\"><title>Prueba guardada</title><link rel=\"stylesheet\" href=\"/estilo/estilo.css\"></head><body><main style=\"max-width:900px;margin:1em auto;\"><h1>Prueba registrada</h1><p>La prueba se ha guardado correctamente.</p><p>Tiempo empleado: <strong>".htmlspecialchars($timeSql)."</strong></p><p><a href=\"/\">Volver</a></p></main></body></html>";
+    $body = '<h1>Prueba registrada</h1><p>La prueba se ha guardado correctamente.</p><p>Tiempo empleado: <strong>'.htmlspecialchars($timeSql).'</strong></p><p><a href="/">Volver</a></p>';
+    render_response('Prueba guardada', $body, 200);
 } else {
-    echo 'Error al guardar la prueba: ' . $mysqli->error;
+    render_response('Error al guardar la prueba', '<h1>Error</h1><p>Error al guardar la prueba: '.htmlspecialchars($mysqli->error).'</p>', 500);
 }
-
-// insertar usuario
-// Nota: la inserción ya se hizo con prepared statements arriba y el recurso MySQL se cerró.
-// No hay necesidad de repetir la inserción.
-
-$mysqli->close();

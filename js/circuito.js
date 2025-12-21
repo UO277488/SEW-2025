@@ -28,20 +28,11 @@ class CargadorAltimetriaSVG {
 
   insertarAltimetriaSVG() {
     const container = document.querySelector(this.containerSelector);
-    // Usar jQuery si está disponible
-    if (window.jQuery) {
-      const $container = window.jQuery(this.containerSelector);
-      $container.empty();
-      // Parsear SVG y añadirlo
-      const $svg = window.jQuery(this.svgContent);
-      $container.append($svg);
-    } else {
-      // DOM nativo
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(this.svgContent, 'image/svg+xml');
-      container.innerHTML = '';
-      container.appendChild(doc.documentElement);
-    }
+    // DOM nativo para insertar el SVG
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(this.svgContent, 'image/svg+xml');
+    container.innerHTML = '';
+    container.appendChild(doc.documentElement);
   }
 }
 

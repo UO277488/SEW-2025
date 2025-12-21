@@ -47,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <link rel="stylesheet" href="../estilo/layout.css">
 </head>
 <body>
-<main style="max-width:900px;margin:1em auto;">
+<main class="content">
   <h1>Configuración - Pruebas de Usabilidad</h1>
   <?php if ($message): ?>
-    <div class="notice"><?=htmlspecialchars($message)?></div>
+    <section role="status" aria-live="polite" class="notice"><?=htmlspecialchars($message)?></section>
   <?php endif; ?>
 
   <form method="post">
@@ -58,13 +58,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
       <button type="submit" name="action" value="reiniciar">Reiniciar base de datos (vaciar tablas)</button>
     </p>
     <p>
-      <button type="submit" name="action" value="eliminar" onclick="return confirm('¿Seguro que deseas eliminar la base de datos completa? Esta acción es irreversible.');">Eliminar base de datos</button>
+      <button type="submit" name="action" value="eliminar" data-confirm="¿Seguro que deseas eliminar la base de datos completa? Esta acción es irreversible.">Eliminar base de datos</button>
     </p>
     <p>
       <button type="submit" name="action" value="exportar">Exportar datos (.zip con CSVs)</button>
     </p>
   </form>
-  <p style="margin-top:2em;color:#666;font-size:0.9em;">Nota: Esta herramienta no incluye el menú del proyecto. Reutiliza las hojas de estilo del proyecto para la apariencia.</p>
+  <p class="note">Nota: Esta herramienta no incluye el menú del proyecto. Reutiliza las hojas de estilo del proyecto para la apariencia.</p>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('button[data-confirm]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var msg = btn.getAttribute('data-confirm') || '¿Estás seguro?';
+      if (!confirm(msg)) e.preventDefault();
+    });
+  });
+});
+</script>
 </body>
 </html>
