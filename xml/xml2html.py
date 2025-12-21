@@ -130,8 +130,8 @@ def generate():
     podio_nodes = xps('ns:podio/ns:corredor') if ns else xps('podio/corredor')
 
     # Header info
-    page.add('  <section aria-labelledby="info-general">')
-    page.add('    <h3 id="info-general">Resumen</h3>')
+    page.add('  <section aria-label="Resumen">')
+    page.add('    <h3>Resumen</h3>')
     page.add('    <table>')
     page.add('      <tr><th>Nombre</th><td>{}</td></tr>'.format(htmllib.escape(nombre)))
     page.add('      <tr><th>Extensión</th><td>{} {}</td></tr>'.format(htmllib.escape(extension), htmllib.escape(extension_unidad)))
@@ -146,8 +146,8 @@ def generate():
     page.add('  </section>')
 
     # Referencias
-    page.add('  <section aria-labelledby="refs">')
-    page.add('    <h3 id="refs">Referencias</h3>')
+    page.add('  <section aria-label="Referencias">')
+    page.add('    <h3>Referencias</h3>')
     if referencias:
         page.add('    <ul>')
         for r in referencias:
@@ -158,10 +158,9 @@ def generate():
     page.add('  </section>')
 
     # Galería de fotos
-    page.add('  <section aria-labelledby="galeria-fotos">')
-    page.add('    <h3 id="galeria-fotos">Galería de fotos</h3>')
+    page.add('  <section aria-label="Galería de fotos">')
+    page.add('    <h3>Galería de fotos</h3>')
     if fotos:
-        page.add('    <div class="gallery">')
         for f in fotos:
             src = f.get('src') if f is not None else ''
             src = src.replace('\\', '/').strip()
@@ -171,14 +170,13 @@ def generate():
             if caption:
                 page.add(f'        <figcaption>{htmllib.escape(caption)}</figcaption>')
             page.add('      </figure>')
-        page.add('    </div>')
     else:
         page.add('    <p>No hay fotos disponibles.</p>')
     page.add('  </section>')
 
     # Galería de vídeos
-    page.add('  <section aria-labelledby="galeria-videos">')
-    page.add('    <h3 id="galeria-videos">Galería de vídeos</h3>')
+    page.add('  <section aria-label="Galería de vídeos">')
+    page.add('    <h3>Galería de vídeos</h3>')
     if videos:
         page.add('    <ul>')
         for v in videos:
@@ -191,16 +189,16 @@ def generate():
     page.add('  </section>')
 
     # Ganador y podio
-    page.add('  <section aria-labelledby="ganador">')
-    page.add('    <h3 id="ganador">Ganador</h3>')
+    page.add('  <section aria-label="Ganador">')
+    page.add('    <h3>Ganador</h3>')
     if ganador or tiempo:
         page.add(f'    <p>{htmllib.escape(ganador)} — {htmllib.escape(tiempo)}</p>')
     else:
         page.add('    <p>Sin información del ganador.</p>')
     page.add('  </section>')
 
-    page.add('  <section aria-labelledby="podio">')
-    page.add('    <h3 id="podio">Podio</h3>')
+    page.add('  <section aria-label="Podio">')
+    page.add('    <h3>Podio</h3>')
     if podio_nodes:
         page.add('    <table><thead><tr><th>Pos</th><th>Nombre</th><th>Puntos</th></tr></thead><tbody>')
         for corredor in podio_nodes:
