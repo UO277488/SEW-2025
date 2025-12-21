@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+    <!-- Datos que describen el documento -->
+    <meta name="author" content="Luis Sánchez de Posada Orihuela, UO277488" />
+    <meta name="description"
+        content="documento a utilizar en otros módulos de la asignatura a fecha de creación del proyecto" />
+    <meta name="keywords" content="aquí cada documento debe tener la lista
+de las palabras clave del mismo separadas por comas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="icon" href="multimedia/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link rel="stylesheet" href="estilo/layout.css">
+    <title>MotoGP-Circuito</title>
+        <!-- MapBox GL JS -->
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+        <script>
+            // Token Mapbox (public key - pk_)
+            window.MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidW8yNzc0ODgiLCJhIjoiY21pcWVicXQxMDNrajVpc2k4OWJmeXJsNCJ9.6p6gBmGRGqJlP36KsaRsOw';
+        </script>
+</head>
+
+<body>
+    <header>
+        <!-- Datos con el contenidos que aparece en el navegador -->
+        <h1>
+            <a href="index.html" title="Ir a la página principal">MotoGP Desktop</a>
+        </h1>
+        <nav>
+            <a href="index.html" title="Página principal">Inicio</a>
+            <a href="piloto.html" title="Información del piloto">Piloto</a>
+            <a href="circuito.html" class="active" title="Información del circuito">Circuito</a>
+            <a href="meteorología.html" title="Información de la meteorología">Meteorología</a>
+            <a href="clasificaciones.php" title="Información sobre las clasificaciones">Clasificaciones</a>
+            <a href="juegos.html" title="Información a cerca de los juegos">Juegos</a>
+            <a href="ayuda.html" title="Accede a la ayuda">Ayuda</a>
+        </nav>
+    </header>
+
+    <main>
+        <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; <strong>Circuito</strong></p>
+
+        <h2>Información sobre los circuitos</h2>
+
+        <section>
+            <h3>Cargar información del circuito</h3>
+            <p>Selecciona el archivo <code>InfoCircuito.html</code> para cargar la información del circuito:</p>
+            <label>Cargar archivo HTML: <input type="file" data-file="infocircuito" accept=".html,.htm" /></label>
+        </section>
+
+        <section data-contenido-infocircuito>
+            <!-- El contenido del archivo InfoCircuito.html se cargará aquí -->
+            <p>Aquí aparecerá el resumen básico del circuito tras cargar un archivo <code>InfoCircuito.html</code>. Usa el selector "Cargar archivo HTML" para cargar los datos desde tu equipo. Si quieres, también puedes cargar manualmente los archivos KML o SVG para ver mapas y perfiles.</p>
+        </section>
+
+
+        <section>
+                <h3>Cargar gráfico de altimetría</h3>
+                <p>Selecciona el archivo <code>altimetria.svg</code> para visualizar el perfil de altimetría:</p>
+                <label>Cargar archivo SVG de altimetría: <input type="file" data-file="altimetria-svg" accept=".svg" /></label>
+        </section>
+
+        <section data-contenido-altimetria-svg>
+                <!-- El gráfico de altimetría se cargará aquí -->
+                <p>Sube aquí un archivo <code>altimetria.svg</code> para visualizar el perfil de altimetría del circuito. El gráfico mostrará la altura en función de la distancia y se actualizará al cargar el archivo.</p>
+        </section>
+
+        <section>
+                <h3>Cargar mapa del circuito (KML)</h3>
+                <p>Selecciona el archivo <code>circuito.kml</code> para visualizar el circuito en un mapa interactivo:</p>
+                <label>Cargar archivo KML: <input type="file" data-file="circuito-kml" accept=".kml" /></label>
+        </section>
+
+            <section data-mapa-circuito role="region" aria-label="Mapa del circuito"></section>
+
+    </main>
+
+    <script src="js/circuito.js"></script>
+</body>
+
+</html>

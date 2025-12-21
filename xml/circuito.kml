@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>Circuit of the Americas</name>
+<Placemark><name>Origen</name><Point><coordinates>-97.641111,30.132778,0</coordinates></Point></Placemark>
+<Placemark><name>Trazo circuito</name><LineString><tessellate>1</tessellate><coordinates>
+-97.641111,30.132778,0 -97.636829,30.130058,0 -97.637151,30.132350,0 -97.635134,30.133630,0 -97.634639,30.134419,0 -97.633822,30.134873,0 -97.633209,30.136004,0 -97.631151,30.135762,0 -97.629790,30.136640,0 -97.629041,30.136214,0 -97.626933,30.136613,0 -97.624522,30.139385,0 -97.636626,30.137285,0 -97.635441,30.135654,0 -97.636419,30.135602,0 -97.637485,30.136586,0 -97.636794,30.134784,0 -97.637296,30.133929,0 -97.638734,30.133724,0 -97.640633,30.135514,0 -97.643493,30.134442,0
+</coordinates></LineString></Placemark>
+<Placemark><name>Tramo 1 (sector 1)</name><Point><coordinates>-97.636829,30.130058,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 2 (sector 1)</name><Point><coordinates>-97.637151,30.132350,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 3 (sector 1)</name><Point><coordinates>-97.635134,30.133630,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 4 (sector 1)</name><Point><coordinates>-97.634639,30.134419,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 5 (sector 1)</name><Point><coordinates>-97.633822,30.134873,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 6 (sector 1)</name><Point><coordinates>-97.633209,30.136004,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 7 (sector 2)</name><Point><coordinates>-97.631151,30.135762,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 8 (sector 2)</name><Point><coordinates>-97.629790,30.136640,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 9 (sector 2)</name><Point><coordinates>-97.629041,30.136214,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 10 (sector 2)</name><Point><coordinates>-97.626933,30.136613,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 11 (sector 2)</name><Point><coordinates>-97.624522,30.139385,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 12 (sector 2)</name><Point><coordinates>-97.636626,30.137285,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 13 (sector 3)</name><Point><coordinates>-97.635441,30.135654,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 14 (sector 3)</name><Point><coordinates>-97.636419,30.135602,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 15 (sector 3)</name><Point><coordinates>-97.637485,30.136586,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 16 (sector 3)</name><Point><coordinates>-97.636794,30.134784,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 17 (sector 3)</name><Point><coordinates>-97.637296,30.133929,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 18 (sector 3)</name><Point><coordinates>-97.638734,30.133724,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 19 (sector 3)</name><Point><coordinates>-97.640633,30.135514,0</coordinates></Point></Placemark>
+<Placemark><name>Tramo 20 (sector 3)</name><Point><coordinates>-97.643493,30.134442,0</coordinates></Point></Placemark>
+</Document></kml>

@@ -1,0 +1,231 @@
+ /* Luis Sánchez de Posada Orihuela, UO277488*/
+ /* Estilos generales del proyecto MotoGP-Desktop*/
+/* Text-decoration-line: usar para correcto funcionamiento */
+/* flexbox: para diseño responsivo y alineación */
+/* Colores: rojo (#CC0F0F), beige (#d3a550), crema (#ebe7d0), negro (#121110) */
+/* header con display:flex;, float,fitset,absolut... NO */
+/* CSS tricks*/
+
+
+/* En la tabla: de 5 filas y 2 columnas en vez de al revés */
+
+/* Especificidad: 001 elemento (body) */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #ebe7d0; /* Fondo general */
+    color: #121110;            /* Color de texto principal */
+}
+
+/* Especificidad: 001 elemento (main.content) */
+main.content {
+    max-width: 900px;
+    margin: 1em auto;
+}
+
+/* Especificidad: 001 elemento (header) */
+header {
+    background-color: #CC0F0F; /* Fondo de la cabecera */
+}
+
+
+header a{
+    color: #ebe7d0; /* Fondo de la cabecera */
+    text-decoration-line: none;
+}
+
+
+/* Active link in navigation */
+nav a.active {
+    color: #d3a550;                /* Color diferente para el elemento activo */
+    font-weight: bold;             /* Negrita para destacar */
+}
+
+
+/* Migas de pan: tamaño de letra más pequeño y destaca el último término */
+/* Especificidad: 002 (main > p:first-of-type)*/
+main > p:first-of-type {
+    font-size: 0.85em;
+    color: #d01110; /* Opcional: color para las migas */
+    margin-bottom: 1em;
+}
+
+/* Especificidad: 003 (main > p:first-of-type strong) */
+main > p:first-of-type strong {
+    color: #CC0F0F;
+    font-weight: bold;
+}
+
+/* Avisos: eliminar regla para enlaces dentro de [role="alert"] porque ya no insertamos alertas automáticamente */
+/* Anteriormente: [role="alert"] a{ color: #600; text-decoration: underline; } */
+
+/* ------------------ Reglas para ejercicios OPTATIVOS 1-5 ------------------ */
+/* Estilos para encabezados y textos generales */
+/* Especificidad: 001 elemento (h1) */
+h1 {
+    font-size: 2.25rem; /* relativa a la raíz */
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0;
+}
+
+/* Especificidad: 001 elemento (h2) */
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0.75rem 0;
+}
+
+/* Especificidad: 001 elemento (h3) */
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0.6rem 0;
+}
+
+/* Especificidad: 001 elemento (h4, h5, h6) */
+h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.4rem 0;
+}
+
+/* Especificidad: 001 elementos de texto (p, li, dd) */
+p, li, dd {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #121110;
+}
+
+/* ------------------ Enlaces externos (OPTATIVO 2) ------------------ */
+/* Especificidad: 012 atributo (a[href^="http"]) */
+a[href^="http"] {
+    color: #0b5bd7; /* azul accesible */
+    text-decoration: underline;
+}
+
+/* Especificidad: 023 pseudoclases (a[href^="http"]:hover, :focus) */
+a[href^="http"]:hover,
+ a[href^="http"]:focus {
+    color: #063a9b;
+    text-decoration: none;
+    outline: 3px solid rgba(6,58,155,0.18);
+    outline-offset: 3px;
+}
+
+/* Accesibilidad: subrayado por defecto para distinguir enlaces, foco visible para navegación teclado */
+
+/* ------------------ Listas (OPTATIVO 3) ------------------ */
+/* Especificidad: 001 elemento (ul) */
+ul {
+    margin-left: 1.25rem;
+    font-size: 1rem;
+}
+
+/* Especificidad: 002 elemento anidado (ul ul) */
+ul ul {
+    list-style-type: square; /* viñeta distinta para anidado */
+    margin-left: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Especificidad: 001 elemento (ol) */
+ol {
+    margin-left: 1.25rem;
+    list-style-position: inside; /* mejor adaptabilidad en móviles */
+}
+
+/* Especificidad: 003 pseudoelemento (ol li::marker) */
+ol li::marker {
+    color: #CC0F0F;
+    font-weight: 700;
+}
+
+/* ------------------ Lista de definición (OPTATIVO 4) ------------------ */
+/* Especificidad: 001 elemento (dl dt) */
+dl dt {
+    font-weight: 700;
+    background-color: rgba(204,15,15,0.06);
+    padding: 0.25rem 0.45rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+}
+/* Aviso: comprobada herencia de colores para dt: el fondo y el color del texto contrastan correctamente y no provocan efectos indeseados. */
+
+/* Especificidad: 001 elemento (dl dd) */
+dl dd {
+    margin-left: 1rem;
+    font-size: 0.95rem;
+}
+
+/* ------------------ Tabla responsive (OPTATIVO 5) ------------------ */
+/* Especificidad: 001 elemento (table) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* Especificidad: 002 elemento (table caption) */
+table caption {
+    caption-side: top;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+/* Especificidad: 002 elementos (table thead th) */
+table thead th {
+    background-color: #CC0F0F; /* color primario del proyecto */
+    color: #ebe7d0; /* se comprueba herencia: contraste suficiente */
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+/* Especificidad: 002 elementos (table tbody td) */
+table tbody td {
+    padding: 0.5rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Media query para transformar tabla en diseño apilado en móvil (sin scroll horizontal) */
+/* Especificidad: media-query redefines display, grid-template-columns y padding (esta redefinición está comentada como permite la excepción). */
+@media (max-width: 600px) {
+    /* Especificidad: 001 (table) */
+    table { border: 0; }
+
+    /* Especificidad: 012 (table thead) */
+    table thead { display: none; } /* redefinición: ocultamos encabezado en móvil */
+
+    /* Especificidad: 012 (table tbody tr) */
+    table tbody tr {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        gap: 0;
+        padding: 0.25rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Especificidad: 012 (table tbody td::before) */
+    table tbody td::before {
+        content: "";
+        font-weight: 700;
+        display: block;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+
+    /* Especificidad: 034 (td:nth-child(n)::before) - etiquetas por columna sin cambiar HTML */
+    table tbody td:nth-child(1)::before { content: "Puntos"; }
+    table tbody td:nth-child(2)::before { content: "Posición"; }
+    table tbody td:nth-child(3)::before { content: "Poles"; }
+    table tbody td:nth-child(4)::before { content: "Victorias"; }
+    table tbody td:nth-child(5)::before { content: "Podios"; }
+
+    /* Nota: con este enfoque se garantiza adaptabilidad en móviles sin scroll horizontal. */
+}
+
+/* Fin de reglas optativas */
+

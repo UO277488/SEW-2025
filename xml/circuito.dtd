@@ -1,0 +1,60 @@
+
+<!ELEMENT circuito (nombreCircuito, extension, anchura, fecha, hora, vueltas, localidad, pais, patrocinador, referencias, galeriaFotos, galeriaVideos, origen, tramos, ganador, podio)>
+<!ELEMENT nombreCircuito (#PCDATA)>
+
+<!-- Nota: DTD no puede validar tipos (int, date, time) ni rangos,
+     por eso los tipos concretos se aplican en el XSD. Aquí mantenemos
+     la estructura y añadimos documentación sobre los tipos esperados. -->
+<!ELEMENT extension (#PCDATA)>
+<!ATTLIST extension unidad CDATA #REQUIRED>
+<!-- Expected: integer value representing meters -->
+
+<!ELEMENT anchura (#PCDATA)>
+<!ATTLIST anchura unidad CDATA #REQUIRED>
+<!-- Expected: integer value representing meters (e.g. 14) -->
+
+<!ELEMENT fecha (#PCDATA)>
+<!-- Expected format for schema: ISO date YYYY-MM-DD -->
+<!ELEMENT hora (#PCDATA)>
+<!-- Expected format for schema: ISO time HH:MM:SS -->
+<!ELEMENT vueltas (#PCDATA)>
+<!-- Expected: integer -->
+<!ELEMENT localidad (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT patrocinador (#PCDATA)>
+
+
+<!ELEMENT coordenada (longitud, latitud, altitud)>
+
+<!ELEMENT punto (coordenada)>
+    <!ELEMENT longitud (#PCDATA)>
+    <!ELEMENT latitud (#PCDATA)>
+    <!ELEMENT altitud (#PCDATA)>
+
+<!ELEMENT origen (coordenada)>
+    <!ELEMENT tramos (tramo+)>
+    <!ELEMENT tramo (punto, sector)>
+    <!ATTLIST tramo distancia CDATA #REQUIRED unidad CDATA #REQUIRED>
+
+<!ELEMENT referencias (referencia+)>
+<!ELEMENT referencia (#PCDATA)>
+
+<!ELEMENT sector (#PCDATA)>
+
+<!ELEMENT ganador (nombreGanador, tiempo)>
+<!ELEMENT tiempo (#PCDATA)>
+<!ELEMENT nombreGanador (#PCDATA)>
+
+<!ELEMENT corredor (posicion, nombreCorredorPodio, puntos)>
+<!ELEMENT posicion (#PCDATA)>
+<!ELEMENT puntos (#PCDATA)>
+<!ELEMENT nombreCorredorPodio (#PCDATA)>
+<!ELEMENT podio (corredor, corredor, corredor)>
+
+<!ELEMENT galeriaFotos (foto+)>
+<!ELEMENT foto (#PCDATA)> 
+<!ATTLIST foto src CDATA #REQUIRED>
+
+<!ELEMENT galeriaVideos (video+)>
+<!ELEMENT video (#PCDATA)>
+<!ATTLIST video src CDATA #REQUIRED>
