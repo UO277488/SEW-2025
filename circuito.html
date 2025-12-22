@@ -18,6 +18,10 @@ de las palabras clave del mismo separadas por comas" />
         <!-- MapBox GL JS -->
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+        <script>
+            // Token Mapbox (public key - pk_)
+            window.MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidW8yNzc0ODgiLCJhIjoiY21pcWVicXQxMDNrajVpc2k4OWJmeXJsNCJ9.6p6gBmGRGqJlP36KsaRsOw';
+        </script>
 </head>
 
 <body>
@@ -45,47 +49,33 @@ de las palabras clave del mismo separadas por comas" />
         <section>
             <h3>Cargar información del circuito</h3>
             <p>Selecciona el archivo <code>InfoCircuito.html</code> para cargar la información del circuito:</p>
-            <label for="file-infocircuito">Cargar archivo HTML:</label>
-            <input type="file" id="file-infocircuito" accept=".html,.htm" />
+            <label>Cargar archivo HTML: <input type="file" data-file="infocircuito" accept=".html,.htm" /></label>
         </section>
 
-        <section id="contenido-infocircuito">
+        <section data-contenido-infocircuito>
             <!-- El contenido del archivo InfoCircuito.html se cargará aquí -->
-            <p>En desarrollo... Carga un archivo HTML para ver su contenido aquí.</p>
+            <p>Aquí aparecerá el resumen básico del circuito tras cargar un archivo <code>InfoCircuito.html</code>. Usa el selector "Cargar archivo HTML" para cargar los datos desde tu equipo. Si quieres, también puedes cargar manualmente los archivos KML o SVG para ver mapas y perfiles.</p>
         </section>
 
-            <section>
-                <h3>Cargar visualización SVG del circuito</h3>
-                <p>Selecciona un archivo SVG para visualizar el mapa del circuito:</p>
-                <label for="file-circuito-svg">Cargar archivo SVG:</label>
-                <input type="file" id="file-circuito-svg" accept=".svg" />
-            </section>
 
-            <section id="contenido-circuito-svg">
-                <!-- El contenido del archivo SVG se cargará aquí -->
-                <p>En desarrollo... Carga un archivo SVG para ver su contenido aquí.</p>
-            </section>
-
-            <section>
+        <section>
                 <h3>Cargar gráfico de altimetría</h3>
                 <p>Selecciona el archivo <code>altimetria.svg</code> para visualizar el perfil de altimetría:</p>
-                <label for="file-altimetria-svg">Cargar archivo SVG de altimetría:</label>
-                <input type="file" id="file-altimetria-svg" accept=".svg" />
-            </section>
+                <label>Cargar archivo SVG de altimetría: <input type="file" data-file="altimetria-svg" accept=".svg" /></label>
+        </section>
 
-            <section id="contenido-altimetria-svg">
+        <section data-contenido-altimetria-svg>
                 <!-- El gráfico de altimetría se cargará aquí -->
-                <p>En desarrollo... Carga un archivo SVG de altimetría para ver su contenido aquí.</p>
-            </section>
+                <p>Sube aquí un archivo <code>altimetria.svg</code> para visualizar el perfil de altimetría del circuito. El gráfico mostrará la altura en función de la distancia y se actualizará al cargar el archivo.</p>
+        </section>
 
-            <section>
+        <section>
                 <h3>Cargar mapa del circuito (KML)</h3>
                 <p>Selecciona el archivo <code>circuito.kml</code> para visualizar el circuito en un mapa interactivo:</p>
-                <label for="file-circuito-kml">Cargar archivo KML:</label>
-                <input type="file" id="file-circuito-kml" accept=".kml" />
-            </section>
+                <label>Cargar archivo KML: <input type="file" data-file="circuito-kml" accept=".kml" /></label>
+        </section>
 
-            <div id="mapa-circuito"></div>
+            <section data-mapa-circuito role="region" aria-label="Mapa del circuito"></section>
 
     </main>
 

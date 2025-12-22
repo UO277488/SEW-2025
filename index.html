@@ -12,6 +12,17 @@ de las palabras clave del mismo separadas por comas" />
     <link rel="icon" href="multimedia/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilo/estilo.css">
     <link rel="stylesheet" href="estilo/layout.css">
+    <!-- Cargamos jQuery desde el CDN principal SIN atributo SRI para evitar bloqueos locales -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Fallback: si el CDN principal falla, cargamos desde CDNJS -->
+    <!-- Cualquier otra opción falla...-->
+    <script>
+      if (typeof jQuery === 'undefined') {
+        var s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js';
+        document.head.appendChild(s);
+      }
+    </script>
     <title>MotoGP</title>
 </head>
 
@@ -26,7 +37,7 @@ de las palabras clave del mismo separadas por comas" />
             <a href="piloto.html" title="Información del piloto">Piloto</a>
             <a href="circuito.html" title="Información del circuito">Circuito</a>
             <a href="meteorología.html" title="Información de la meteorología">Meteorología</a>
-            <a href="clasificaciones.html" title="Información sobre las clasificaciones">Clasificaciones</a>
+            <a href="clasificaciones.php" title="Información sobre las clasificaciones">Clasificaciones</a>
             <a href="juegos.html" title="Información a cerca de los juegos">Juegos</a>
             <a href="ayuda.html" title="Accede a la ayuda">Ayuda</a>
         </nav>
@@ -35,7 +46,76 @@ de las palabras clave del mismo separadas por comas" />
     <main>
         <!--&gt;&gt; <strong>Inicio</strong>???????--> 
         <p>Estás en: <a href="index.html">Inicio</a></p>
-        <p>En desarrollo...</p>
+    
+    <section data-fotos-motogp aria-label="Fotos de MotoGP">
+      <h2>Fotos de MotoGP</h2>
+      <!-- El carrusel se insertará aquí -->
+    </section>
+
+    <section data-noticias-motogp aria-label="Noticias de MotoGP">
+      <!-- Noticias (3) se mostrarán bajo el carrusel -->
+    </section>
+
     </main>
+    <script>
+      // API key para TheNewsApi (proporcionada por el usuario). No es la clave de Flickr.
+      window.THENEWSAPI_KEY = 'pNBiHSu37HtsIQQxQLV4wEeroHhmtjVHhgo93av0';
+    </script>
+    <script src="js/carrusel.js"></script>
+    <script src="js/noticias.js"></script>
+    <script>
+        // Ejemplo de uso: crea y arranca el carrusel al cargar la página
+        (function(){
+            if (typeof $ !== 'undefined') {
+                $(function(){
+                    // Exponer la instancia globalmente para control desde la UI
+                    window.__carrusel = new Carrusel('MotoGP', 5, { useFixedFive: false });
+                    // Arrancar con reintentos internos (buscará combinaciones aleatorias)
+                    window.__carrusel.start();
+
+                    // Aplicar búsqueda almacenada si existe (sincronización entre pestañas)
+                    try {
+                      const sel = localStorage.getItem('motogp:selectedCircuit');
+                      if (sel) {
+                        const obj = JSON.parse(sel);
+                        if (obj && obj.name) window.__carrusel.updateBusqueda(obj.name);
+                      }
+                    } catch (e) { console.warn('Error leyendo motogp:selectedCircuit', e); }
+
+                    // Escuchar cambios provenientes de otras pestañas/ventanas
+                    window.addEventListener('storage', (ev) => {
+                      if (ev.key === 'motogp:selectedCircuit' && ev.newValue) {
+                        try {
+                          const obj = JSON.parse(ev.newValue);
+                          if (obj && obj.name && window.__carrusel) window.__carrusel.updateBusqueda(obj.name);
+                        } catch (err) { console.warn('Error procesando motogp:selectedCircuit', err); }
+                      }
+                    });
+
+                    // Inicializar noticias (usa window.THENEWSAPI_KEY si la exportas desde el servidor o desde consola antes)
+                    try {
+                      const noticias = new Noticias('MotoGP', window.THENEWSAPI_KEY || null);
+                      noticias.buscar(3)
+                        .then(json => {
+                          const articles = noticias.procesarInformacion(json, 3);
+                          noticias.mostrarNoticias('section[data-noticias-motogp]', articles);
+                          // Si se trató de mock, añadir aviso para configurar clave
+                          if (json && json._mock && (!window.THENEWSAPI_KEY)) {
+                            const cont = document.querySelector('section[data-noticias-motogp]');
+                            const note = document.createElement('p');
+                            note.textContent = 'Nota: para obtener noticias reales añade tu api_key de TheNewsApi en window.THENEWSAPI_KEY.';
+                            cont.appendChild(note);
+                          }
+                        })
+                        .catch(err => console.warn('Error obteniendo noticias:', err));
+                    } catch (err) { console.warn('No se pudieron inicializar Noticias', err); }
+
+                });
+            } else {
+                // Fallback si jQuery no está disponible
+                console.warn('jQuery no está disponible: el carrusel no se iniciará automáticamente.');
+            }
+        })();
+    </script>
 </body>
 </html>

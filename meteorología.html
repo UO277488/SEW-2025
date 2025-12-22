@@ -13,6 +13,8 @@ de las palabras clave del mismo separadas por comas" />
     <link rel="stylesheet" href="estilo/estilo.css">
     <link rel="stylesheet" href="estilo/layout.css">
     <title>MotoGP-Meteorología</title>
+    <!-- Añadimos jQuery para las llamadas AJAX de meteorología -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="js/ciudad.js"></script>
 </head>
 
@@ -35,7 +37,8 @@ de las palabras clave del mismo separadas por comas" />
     
     <main>
         <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; <strong>Meteorología</strong></p>
-        <h2>Documento en el que se añadirá información más adelante.</h2>
+        <h2>Meteorología del circuito</h2>
+        <p>Consulta predicciones y datos históricos para la fecha de la carrera. Introduce la fecha de la carrera o la fecha final de los entrenamientos y pulsa los controles para obtener la meteorología (Open‑Meteo).</p>
         <script>
             var ciudad = new Ciudad('Austin', 'Estados Unidos', 'austinés');
             ciudad.rellenarAtributos(993588, '30°18′00″N 97°44′00″O');
@@ -54,6 +57,45 @@ de las palabras clave del mismo separadas por comas" />
             ciudad.mostrarCoordenadas();
 
             main.insertAdjacentHTML('beforeend', ciudad.obtenerGentilicioPoblacion());
+
+            /* Controles y zonas de resultado para las tareas de meteorología */
+            main.insertAdjacentHTML('beforeend', `
+              <section aria-label="Controles meteorología" data-meteorologia-controles>
+                <h3>Consultar meteorología (Open‑Meteo)</h3>
+                <p>Introduce la <strong>fecha de la carrera</strong> (YYYY‑MM‑DD) y pulsa "Obtener meteorología" para ver la predicción/histórico del día de la carrera.</p>
+                <label>Fecha de la carrera: <input data-fecha-carrera type="date" aria-label="Fecha de la carrera"></label>
+                <button data-obtener-carrera type="button">Obtener meteorología de la carrera</button>
+
+                <hr>
+                <p>O bien consulta los <strong>3 días de entrenamientos</strong> indicando la fecha final (día anterior a la carrera) y pulsa "Obtener entrenamientos".</p>
+                <label>Último día de entrenamientos: <input data-fecha-entrenos type="date" aria-label="Último día de entrenamientos"></label>
+                <button data-obtener-entrenos type="button">Obtener meteorología entrenos (3 días)</button>
+              </section>
+
+              <section aria-label="Meteorología de la carrera" data-meteorologia-carrera></section>
+              <section aria-label="Meteorología de entrenamientos" data-meteorologia-entrenos></section>
+            `);
+
+            // Añadimos handlers para botones que llamarán a los métodos de la clase Ciudad
+            document.querySelector('[data-obtener-carrera]').addEventListener('click', function(){
+              const fecha = document.querySelector('[data-fecha-carrera]').value;
+              if (!fecha) {
+                console.warn('Por favor introduce la fecha de la carrera en formato YYYY-MM-DD');
+                document.querySelector('[data-fecha-carrera]').focus();
+                return;
+              }
+              ciudad.getMeteorologiaCarrera(fecha);
+            });
+
+            document.querySelector('[data-obtener-entrenos]').addEventListener('click', function(){
+              const fechaFinal = document.querySelector('[data-fecha-entrenos]').value;
+              if (!fechaFinal) {
+                console.warn('Por favor introduce la fecha final de los entrenamientos (último día)');
+                document.querySelector('[data-fecha-entrenos]').focus();
+                return;
+              }
+              ciudad.getMeteorologiaEntrenos(fechaFinal);
+            });
         </script>
     </main>
 </body>

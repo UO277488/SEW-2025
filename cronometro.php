@@ -1,51 +1,5 @@
 <?php
-class Cronometro{
-    private $tiempo;
-    private $inicio;
-    private $enMarcha;
-
-    public function __construct(){
-        $this->inicio = 0.0;
-        $this->tiempo = 0.0;
-        $this->enMarcha = false;
-    }
-
-    public function arrancar(){
-        if (!$this->enMarcha) {
-            $this->inicio = microtime(true);
-            $this->enMarcha = true;
-        }
-    }
-
-    public function parar(){
-        if ($this->enMarcha) {
-            $this->tiempo = microtime(true) - $this->inicio;
-            $this->enMarcha = false;
-        }
-    }
-
-    public function mostrar(){
-        $elapsed = $this->enMarcha ? (microtime(true) - $this->inicio) : $this->tiempo;
-        $minutos = floor($elapsed / 60);
-        $segundos = fmod($elapsed, 60);
-        echo sprintf("%02d:%04.1f", $minutos, $segundos);
-    }
-
-    public function pulsarBotón($boton){
-        match ($boton) {
-            'arrancar' => $this->arrancar(),
-            'parar' => $this->parar(),
-            'mostrar' => $this->mostrar()
-        };
-    }
-
-    // Alias con nombre ASCII por compatibilidad
-    public function pulsarBoton($boton){
-        return $this->pulsarBotón($boton);
-    }
-
-    //arrancar sesión ??
-}
+require_once __DIR__ . '/php/Cronometro.php';
 session_start();
 ?>
 <!doctype html>
@@ -75,7 +29,7 @@ session_start();
             <a href="piloto.html" title="Información del piloto">Piloto</a>
             <a href="circuito.html" title="Información del circuito">Circuito</a>
             <a href="meteorología.html" title="Información de la meteorología">Meteorología</a>
-            <a href="clasificaciones.html" class ="active" title="Información sobre las clasificaciones">Clasificaciones</a>
+            <a href="clasificaciones.php" class ="active" title="Información sobre las clasificaciones">Clasificaciones</a>
             <a href="juegos.html" title="Información a cerca de los juegos">Juegos</a>
             <a href="ayuda.html" title="Accede a la ayuda">Ayuda</a>
         </nav>
@@ -98,11 +52,14 @@ session_start();
 
                 if (count($_POST)>0) 
                 {   
-                    match (true) {
-                        isset($_POST['arrancar']) => $cronometro->pulsarBotón('arrancar'),
-                        isset($_POST['parar']) => $cronometro->pulsarBotón('parar'),
-                        isset($_POST['mostrar']) => $cronometro->pulsarBotón('mostrar'),
-                    };
+                    if (isset($_POST['arrancar'])) {
+                      $cronometro->pulsarBoton('arrancar');
+                    } elseif (isset($_POST['parar'])) {
+                      $cronometro->pulsarBoton('parar');
+                    } elseif (isset($_POST['mostrar'])) {
+                      $res = $cronometro->pulsarBoton('mostrar');
+                      if ($res) echo '<p>Tiempo: <strong>' . htmlspecialchars($res) . '</strong></p>';
+                    }
 
                     // actualiza la sesión manteniendo el estado del cronómetro
                     $_SESSION['cronometro'] = $cronometro;

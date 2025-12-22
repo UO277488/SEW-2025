@@ -34,8 +34,69 @@ de las palabras clave del mismo separadas por comas" />
 
     <main>
         <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; <strong>Clasificaciones</strong></p>
-        <h2>Documento en el que se añadirá información sobre las clasificaciones más adelante...</h2>
-        <p>En desarrollo...</p>
+
+        <section aria-label="Ganador de la carrera">
+          <h2>Ganador</h2>
+          <article id="ganador">
+            <!-- Se rellenará desde XML en el servidor -->
+            <?php
+              try {
+                $xmlPath = __DIR__ . '/xml/circuitoEsquema.xml';
+                if (!file_exists($xmlPath)) throw new Exception('Fichero XML no encontrado');
+                $doc = new DOMDocument();
+                $doc->load($xmlPath);
+                $xpath = new DOMXPath($doc);
+                $xpath->registerNamespace('u','http://www.uniovi.es');
+
+                // Nombre ganador
+                $nombreNode = $xpath->query('//u:ganador/u:nombreGanador')->item(0);
+                $tiempoNode = $xpath->query('//u:ganador/u:tiempo')->item(0);
+                if ($nombreNode && $tiempoNode) {
+                  $nombre = htmlspecialchars(trim($nombreNode->textContent));
+                  $tiempo = htmlspecialchars(trim($tiempoNode->textContent));
+                  echo "<p><strong>" . $nombre . "</strong> — Tiempo: <time datetime=\"" . $tiempo . "\">" . $tiempo . "</time></p>";
+                } else {
+                  echo "<p>No se ha encontrado información del ganador en el fichero XML.</p>";
+                }
+
+                // Podio (se incluye aquí dentro del mismo try para garantizar que $xpath está definido)
+                $corredores = $xpath->query('//u:podio/u:corredor');
+                // almacenamos el resultado en una variable para que el bloque de podio en el HTML pueda usarla
+                $GLOBALS['__clasificaciones_podio'] = $corredores;
+
+              } catch (Exception $e) {
+                echo '<p>Error leyendo XML: ' . htmlspecialchars($e->getMessage()) . '</p>';
+                $GLOBALS['__clasificaciones_podio'] = null;
+              }
+            ?>
+          </article>
+        </section>
+
+        <section aria-label="Podio de la carrera">
+          <h2>Podio</h2>
+          <ol>
+            <?php
+              $corredores = $GLOBALS['__clasificaciones_podio'] ?? null;
+              if ($corredores && $corredores->length>0) {
+                foreach ($corredores as $c) {
+                  // Si el nodo viene de DOMNode, usamos XPath para extraer los campos
+                  $pos = '';
+                  $nombre = '';
+                  $puntos = '';
+                  try {
+                    $pos = $c->getElementsByTagName('posicion')->item(0) ? $c->getElementsByTagName('posicion')->item(0)->textContent : '';
+                    $nombre = $c->getElementsByTagName('nombreCorredorPodio')->item(0) ? $c->getElementsByTagName('nombreCorredorPodio')->item(0)->textContent : '';
+                    $puntos = $c->getElementsByTagName('puntos')->item(0) ? $c->getElementsByTagName('puntos')->item(0)->textContent : '';
+                  } catch (Exception $e) { /* ignore */ }
+                  echo '<li><strong>' . htmlspecialchars(trim($nombre)) . '</strong> — Puntos: ' . htmlspecialchars(trim($puntos)) . '</li>';
+                }
+              } else {
+                echo '<li>No hay información de podio.</li>';
+              }
+            ?>
+          </ol>
+        </section>
+
     </main>
 
     

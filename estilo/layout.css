@@ -70,22 +70,44 @@ nav {
 }
 
 /* Reglas para el mapa dinámico del circuito */
-#mapa-circuito {
+[data-mapa-circuito] {
     width: 100%;
     height: 520px; /* altura por defecto en escritorio */
     margin: 1em 0;
     border: 1px solid #ddd;
 }
 
-/* Regla genérica alternativa si se usa body > div como contenedor principal */
-body > div#mapa-circuito {
+/* Regla genérica alternativa si se usa body > section como contenedor principal */
+body > section[data-mapa-circuito] {
     display: block;
 }
 
 @media (max-width: 480px) {
     /* En móviles, ocupar la mayor parte de la pantalla vertical */
-    #mapa-circuito {
+    [data-mapa-circuito] {
         height: 60vh;
         margin: 0.5em 0;
     }
 }
+
+/* Reglas para que el carrusel de imágenes ocupe todo el ancho en móvil */
+/* Especificidad: 012 (article[data-carrusel] h2 + img) */
+@media (max-width: 600px) {
+    article[data-carrusel] h2 + img,
+    article[data-carrusel] img { width: 100%; height: auto; display: block; }
+    article[data-carrusel] { padding: 0.4rem; }
+}
+
+/* Transición de fade para el carrusel: respetar preferencia reduce-motion */
+article[data-carrusel] img {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    article[data-carrusel] img { transition: none !important; }
+}
+ 

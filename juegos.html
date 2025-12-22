@@ -47,7 +47,8 @@ de las palabras clave del mismo separadas por comas" />
     <script>
     (function(){
         if (location.protocol === 'file:') {
-            var note = document.createElement('div');
+            var note = document.createElement('aside');
+            note.setAttribute('role', 'status');
             // estilos en línea eliminados a petición del autor
             note.innerHTML = 'Nota: estás abriendo esta página desde el sistema de archivos (file://). Para usar las páginas PHP abre esta URL en tu servidor local: <a href="http://localhost/MotoGP-Desktop/juegos.html">http://localhost/MotoGP-Desktop/juegos.html</a>';
             var main = document.querySelector('main') || document.body;
